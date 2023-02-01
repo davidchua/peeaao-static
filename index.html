@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html><head>
+	<meta name="generator" content="Hugo 0.88.1" />
+  <title>Ping Everything Everywhere All At Once - Get Uptime As An API Service</title>
+  <meta name="description" content="With a single API call, get ping and http status results of your website from all over the world"> <script defer data-domain="peeaao.com"
+                src="https://trk.2launch.us/js/script.js"></script>
+</head>
+<body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/style.css">
+<div id="doc" class="markdown-body container-fluid">
+<h1>Ping Everything Everywhere All At Once</h1>
+  <p><strong>Ping Everything Everywhere All At Once (PEEAAO)</strong> is an API service that you can call to receive a ping result from multiple servers around the world which you can use to forward to a notifier to receive alerts or to generate your own status page.</p>
+
+
+
+  <div class="mb-2">
+  
+  <h2 class="title-summary" id="supported-servers">🌎️ Supported Servers</h2>
+  <ul>
+<li>Singapore</li>
+<li>Japan</li>
+<li>Germany</li>
+<li>Finland</li>
+<li>Oregon, US</li>
+<li>New York, US</li>
+<li>and many more to come</li>
+</ul>
+
+</div>
+
+
+  <div class="mb-2">
+  
+  <h2 class="title-summary" id="usage">⚡️ Usage</h2>
+  <p>To use, you will make a curl to our API server and specify a <code>callback_url</code> which you will receive notifications on the ping results at.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
+</span><span style="color:#e6db74">    https://api.peeaao.com/ping \
+</span><span style="color:#e6db74">    -F target=https://url \
+</span><span style="color:#e6db74">    -F interval=15s \
+</span><span style="color:#e6db74">    -F count=100 \
+</span><span style="color:#e6db74">    -F locations=singapore \
+</span><span style="color:#e6db74">    -F callback_url=https://callback_url \
+</span><span style="color:#e6db74">    -F expected_code=301    
+</span></code></pre></div><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Optional</th>
+<th>Single Request</th>
+<th>Interval/Callback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>URL to target (in http/https)</td>
+<td>-</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>-</td>
+<td>Yes</td>
+<td>-</td>
+<td>X</td>
+</tr>
+<tr>
+<td>callback_url</td>
+<td>-</td>
+<td>Yes</td>
+<td>-</td>
+<td>X</td>
+</tr>
+<tr>
+<td>locations</td>
+<td>Ping from locations (comma-delimited)</td>
+<td>Yes</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>count</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>X</td>
+</tr>
+<tr>
+<td>expected_code</td>
+<td>-</td>
+<td>-</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-single-request">✒ Single Request</h3>
+<p>In this mode, you will get the result in the same request.</p>
+<p>To send out a single request, you must <strong>NOT</strong> have the following parameters set <code>interval</code>, <code>callback_url</code> and <code>count</code></p>
+<h4 id="example-request">Example Request</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
+</span><span style="color:#e6db74">    https://api.peeaao.com/ping \
+</span><span style="color:#e6db74">    -F target=https://url \
+</span><span style="color:#e6db74">    -F expected_code=301  
+</span><span style="color:#e6db74">
+</span></code></pre></div><h4 id="example-response">Example Response</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># response</span>
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ping_completed&#34;</span>,
+  <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;https://google.com&#34;</span>,
+  <span style="color:#e6db74">&#34;locations&#34;</span>: <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;singapore&#34;</span>: <span style="color:#f92672">[</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
+        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
+        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
+        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 315,
+        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">200</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;errors&#34;</span>: <span style="color:#f92672">[</span>
+    <span style="color:#e6db74">&#34;[eu1.peeaao.com:4123] rpc error: code = DeadlineExceeded desc = context deadline exceeded&#34;</span>,
+    <span style="color:#e6db74">&#34;one or more locations is not returning the expected status code (301)&#34;</span>
+  <span style="color:#f92672">]</span>,
+  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;DOWN&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="interval--callback">Interval / Callback</h3>
+<p>In this mode, the result will be sent back to you via a <code>POST</code> to the <code>callback_url</code>. A initial response will be returned to your request without any special parameters.</p>
+<p>Upon a successful request being accepted by our API server, you will receive a <code>200</code>.</p>
+<p><strong>Note</strong>: This does not denote a successful ping result but rather is returned to inform you that your request have been well received and being processed.</p>
+<h4 id="example-request-1">Example Request</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
+</span><span style="color:#e6db74">    https://api.peeaao.com/ping \
+</span><span style="color:#e6db74">    -F target=https://url \
+</span><span style="color:#e6db74">    -F interval=15s \
+</span><span style="color:#e6db74">    -F count=100 \
+</span><span style="color:#e6db74">    -F locations=singapore \
+</span><span style="color:#e6db74">    -F callback_url=https://callback_url \
+</span><span style="color:#e6db74">    -F expected_code=301  
+</span></code></pre></div><h4 id="initial-response">Initial Response</h4>
+<pre tabindex="0"><code>POST 200
+{
+    &quot;request_id&quot;: &lt;a generated number&gt;
+}
+</code></pre><p>The <code>callback_url</code> will receive a <code>POST</code> under the following circumstances:</p>
+<ol>
+<li>The ping request have been completed and a summary is returned</li>
+<li>In between <code>ping_intervals</code>, when a ping result fails the <code>expected_code</code></li>
+<li>The ping request is unexpectedly terminated</li>
+</ol>
+<h4 id="callback-success">Callback Success</h4>
+<pre tabindex="0"><code># callback response
+{
+  &quot;type&quot;: &quot;&quot;,
+  &quot;request_id&quot;: &lt;generated number returned from initial request&gt;,
+  &quot;status&quot;: &quot;ping_completed&quot;,
+  &quot;target&quot;: &quot;https://google.com&quot;,
+  &quot;interval&quot;: &quot;15s&quot;,
+  &quot;count&quot;: 2,
+  &quot;locations&quot;: {
+    &quot;singapore&quot;: [
+      {
+        &quot;runner_id&quot;: &quot;ap1.peeaao.com&quot;,
+        &quot;location&quot;: &quot;singapore&quot;,
+        &quot;timestamp&quot;: &lt;timestamp&gt;,
+        &quot;result_in_ms&quot;: 315,
+        &quot;code&quot;: 200
+      },
+      {
+        &quot;runner_id&quot;: &quot;ap1.peeaao.com&quot;,
+        &quot;location&quot;: &quot;singapore&quot;,
+        &quot;timestamp&quot;: &lt;timestamp&gt;,
+        &quot;result_in_ms&quot;: 145,
+        &quot;code&quot;: 200
+      },
+    ]
+  },
+  &quot;errors&quot;: [],
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><h4 id="callback-ping-failure">Callback Ping Failure</h4>
+<pre tabindex="0"><code>{
+  &quot;type&quot;: &quot;&quot;,
+  &quot;request_id&quot;: &lt;generated number returned from initial request&gt;,
+  &quot;status&quot;: &quot;ping_failure&quot;,
+  &quot;target&quot;: &quot;https://google.com&quot;,
+  &quot;interval&quot;: &quot;15s&quot;,
+  &quot;count&quot;: 2,
+  &quot;locations&quot;: {
+    &quot;singapore&quot;: [
+      {
+        &quot;runner_id&quot;: &quot;ap1.peeaao.com&quot;,
+        &quot;location&quot;: &quot;singapore&quot;,
+        &quot;timestamp&quot;: &lt;timestamp&gt;,
+        &quot;result_in_ms&quot;: 145,
+        &quot;code&quot;: 304
+      },
+    ]
+  },
+  &quot;status&quot;: &quot;DOWN&quot;
+}
+
+</code></pre><h4 id="callback-request-terminated">Callback Request Terminated</h4>
+<p>This is returned when the request was terminated. You should not expect any further callbacks after this.</p>
+<pre tabindex="0"><code>{
+    &quot;type&quot;: &quot;&quot;,
+    &quot;request_id&quot;: &lt;generated number returned from initial request&gt;,
+    &quot;status&quot;: &quot;unexpected_error&quot;,
+    &quot;error&quot;: &lt;msg&gt;,
+}
+
+</code></pre>
+</div>
+
+
+  <div class="mb-2">
+  
+  <h2 class="title-summary" id="private-beta-is-open">📨 Private Beta is Open</h2>
+  <p>We are currently in private beta. To register your interest, please leave your email at the following link: <a href="https://forms.gle/ZkAzxLVnVDftLNLn7">https://forms.gle/ZkAzxLVnVDftLNLn7</a></p>
+
+</div>
+
+
+
+
+        </div><div id="footer"></div>
+</body>
+</html>
