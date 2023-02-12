@@ -163,78 +163,78 @@
 </span><span style="color:#e6db74">    -F callback_url=https://callback_url \
 </span><span style="color:#e6db74">    -F expected_code=301  
 </span></code></pre></div><h4 id="initial-response">Initial Response</h4>
-<pre tabindex="0"><code>POST 200
-{
-    &quot;request_id&quot;: &lt;a generated number&gt;
-}
-</code></pre><p>The <code>callback_url</code> will receive a <code>POST</code> under the following circumstances:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST <span style="color:#ae81ff">200</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;a generated number&gt;
+<span style="color:#f92672">}</span>
+</code></pre></div><p>The <code>callback_url</code> will receive a <code>POST</code> under the following circumstances:</p>
 <ol>
 <li>The ping request have been completed and a summary is returned</li>
 <li>In between <code>ping_intervals</code>, when a ping result fails the <code>expected_code</code></li>
 <li>The ping request is unexpectedly terminated</li>
 </ol>
 <h4 id="callback-success">Callback Success</h4>
-<pre tabindex="0"><code># callback response
-{
-  &quot;type&quot;: &quot;&quot;,
-  &quot;request_id&quot;: &lt;generated number returned from initial request&gt;,
-  &quot;status&quot;: &quot;ping_completed&quot;,
-  &quot;target&quot;: &quot;https://google.com&quot;,
-  &quot;interval&quot;: &quot;15s&quot;,
-  &quot;count&quot;: 2,
-  &quot;locations&quot;: {
-    &quot;singapore&quot;: [
-      {
-        &quot;runner_id&quot;: &quot;ap1.peeaao.com&quot;,
-        &quot;location&quot;: &quot;singapore&quot;,
-        &quot;timestamp&quot;: &lt;timestamp&gt;,
-        &quot;result_in_ms&quot;: 315,
-        &quot;code&quot;: 200
-      },
-      {
-        &quot;runner_id&quot;: &quot;ap1.peeaao.com&quot;,
-        &quot;location&quot;: &quot;singapore&quot;,
-        &quot;timestamp&quot;: &lt;timestamp&gt;,
-        &quot;result_in_ms&quot;: 145,
-        &quot;code&quot;: 200
-      },
-    ]
-  },
-  &quot;errors&quot;: [],
-  &quot;status&quot;: &quot;UP&quot;
-}
-</code></pre><h4 id="callback-ping-failure">Callback Ping Failure</h4>
-<pre tabindex="0"><code>{
-  &quot;type&quot;: &quot;&quot;,
-  &quot;request_id&quot;: &lt;generated number returned from initial request&gt;,
-  &quot;status&quot;: &quot;ping_failure&quot;,
-  &quot;target&quot;: &quot;https://google.com&quot;,
-  &quot;interval&quot;: &quot;15s&quot;,
-  &quot;count&quot;: 2,
-  &quot;locations&quot;: {
-    &quot;singapore&quot;: [
-      {
-        &quot;runner_id&quot;: &quot;ap1.peeaao.com&quot;,
-        &quot;location&quot;: &quot;singapore&quot;,
-        &quot;timestamp&quot;: &lt;timestamp&gt;,
-        &quot;result_in_ms&quot;: 145,
-        &quot;code&quot;: 304
-      },
-    ]
-  },
-  &quot;status&quot;: &quot;DOWN&quot;
-}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># callback response</span>
+<span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;generated number returned from initial request&gt;,
+  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ping_completed&#34;</span>,
+  <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;https://google.com&#34;</span>,
+  <span style="color:#e6db74">&#34;interval&#34;</span>: <span style="color:#e6db74">&#34;15s&#34;</span>,
+  <span style="color:#e6db74">&#34;count&#34;</span>: 2,
+  <span style="color:#e6db74">&#34;locations&#34;</span>: <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;singapore&#34;</span>: <span style="color:#f92672">[</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
+        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
+        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
+        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 315,
+        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">200</span>
+      <span style="color:#f92672">}</span>,
+      <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
+        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
+        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
+        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 145,
+        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">200</span>
+      <span style="color:#f92672">}</span>,
+    <span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;errors&#34;</span>: <span style="color:#f92672">[]</span>,
+  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;UP&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="callback-ping-failure">Callback Ping Failure</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span>
+  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+  <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;generated number returned from initial request&gt;,
+  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ping_failure&#34;</span>,
+  <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;https://google.com&#34;</span>,
+  <span style="color:#e6db74">&#34;interval&#34;</span>: <span style="color:#e6db74">&#34;15s&#34;</span>,
+  <span style="color:#e6db74">&#34;count&#34;</span>: 2,
+  <span style="color:#e6db74">&#34;locations&#34;</span>: <span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;singapore&#34;</span>: <span style="color:#f92672">[</span>
+      <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
+        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
+        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
+        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 145,
+        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">304</span>
+      <span style="color:#f92672">}</span>,
+    <span style="color:#f92672">]</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;DOWN&#34;</span>
+<span style="color:#f92672">}</span>
 
-</code></pre><h4 id="callback-request-terminated">Callback Request Terminated</h4>
+</code></pre></div><h4 id="callback-request-terminated">Callback Request Terminated</h4>
 <p>This is returned when the request was terminated. You should not expect any further callbacks after this.</p>
-<pre tabindex="0"><code>{
-    &quot;type&quot;: &quot;&quot;,
-    &quot;request_id&quot;: &lt;generated number returned from initial request&gt;,
-    &quot;status&quot;: &quot;unexpected_error&quot;,
-    &quot;error&quot;: &lt;msg&gt;,
-}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+    <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;generated number returned from initial request&gt;,
+    <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;unexpected_error&#34;</span>,
+    <span style="color:#e6db74">&#34;error&#34;</span>: &lt;msg&gt;,
+<span style="color:#f92672">}</span>
 
-</code></pre>
+</code></pre></div>
 </div>
 
 
