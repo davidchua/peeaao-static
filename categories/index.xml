@@ -2,9 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Ping Everything Everywhere All At Once - Get Uptime As An API Service</title>
-    <link>www.example.com/categories/</link>
+    <link>//192.168.1.161:44829/categories/</link>
     <description>Recent content in Categories on Ping Everything Everywhere All At Once - Get Uptime As An API Service</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="www.example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="//192.168.1.161:44829/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

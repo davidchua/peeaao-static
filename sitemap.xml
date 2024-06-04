@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>www.example.com/servers/</loc>
+    <loc>//192.168.1.161:44829/servers/</loc>
     <lastmod>2019-02-11T19:27:37+10:00</lastmod>
   </url><url>
-    <loc>www.example.com/usage/</loc>
+    <loc>//192.168.1.161:44829/usage/</loc>
     <lastmod>2019-02-11T19:27:37+10:00</lastmod>
   </url><url>
-    <loc>www.example.com/action/</loc>
+    <loc>//192.168.1.161:44829/action/</loc>
     <lastmod>2019-02-11T19:27:37+10:00</lastmod>
   </url><url>
-    <loc>www.example.com/</loc>
+    <loc>//192.168.1.161:44829/</loc>
     <lastmod>2018-11-28T15:14:39+10:00</lastmod>
   </url><url>
-    <loc>www.example.com/categories/</loc>
+    <loc>//192.168.1.161:44829/categories/</loc>
   </url><url>
-    <loc>www.example.com/tags/</loc>
+    <loc>//192.168.1.161:44829/tags/</loc>
   </url>
 </urlset>
