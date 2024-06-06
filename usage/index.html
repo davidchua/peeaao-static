@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=44829&amp;path=livereload" data-no-instant defer></script>
+<html><head>
   <title>Ping Everything Everywhere All At Once - Get Uptime As An API Service</title>
   <meta name="description" content="With a single API call, get ping and http status results of your website from all over the world">
 
@@ -107,7 +107,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -F target=https://url \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -F expected_code=301  
 </span></span></span></code></pre></div><h4 id="example-response">Example Response</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># response</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 200 response</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ping_completed&#34;</span>,
@@ -129,6 +129,10 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">]</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;DOWN&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 4xx-5xx response</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;&lt;error message&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="interval--callback">Interval / Callback</h3>
 <p>In this mode, the result will be sent back to you via a <code>POST</code> to the <code>callback_url</code>. A initial response will be returned to your request without any special parameters.</p>
 <p>Upon a successful request being accepted by our API server, you will receive a <code>200</code>.</p>
@@ -144,9 +148,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -F callback_url=https://callback_url \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -F expected_code=301  
 </span></span></span></code></pre></div><h4 id="initial-response">Initial Response</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>POST <span style="color:#ae81ff">200</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 200 response</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;a generated number&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 4xx-5xx response</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;&lt;error message&gt;&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>The <code>callback_url</code> will receive a <code>POST</code> under the following circumstances:</p>
 <ol>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ping Everything Everywhere All At Once on Ping Everything Everywhere All At Once - Get Uptime As An API Service</title>
-    <link>//192.168.1.161:44829/</link>
+    <link>www.example.com/</link>
     <description>Recent content in Ping Everything Everywhere All At Once on Ping Everything Everywhere All At Once - Get Uptime As An API Service</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Feb 2019 19:27:37 +1000</lastBuildDate>
-    <atom:link href="//192.168.1.161:44829/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="www.example.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Supported Servers</title>
-      <link>//192.168.1.161:44829/servers/</link>
+      <link>www.example.com/servers/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
-      <guid>//192.168.1.161:44829/servers/</guid>
+      <guid>www.example.com/servers/</guid>
       <description> Singapore Japan Germany Finland Oregon, US New York, US and many more to come </description>
     </item>
     <item>
       <title>Usage</title>
-      <link>//192.168.1.161:44829/usage/</link>
+      <link>www.example.com/usage/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
-      <guid>//192.168.1.161:44829/usage/</guid>
+      <guid>www.example.com/usage/</guid>
       <description>To use, you will make a curl to our API server and specify a callback_url which you will receive notifications on the ping results at.&#xA;curl -X POST \ -H &amp;#34;Authorization: Bearer &amp;lt;token&amp;gt; \ https://api.peeaao.com/ping \ -F target=https://url \ -F interval=15s \ -F count=100 \ -F locations=singapore \ -F callback_url=https://callback_url \ -F expected_code=301 Parameter Description Optional Single Request Interval/Callback target URL to target (in http/https) - X X interval - Yes - X callback_url - Yes - X locations Ping from locations (comma-delimited) Yes X X count - - - X expected_code - - X X ✒ Single Request In this mode, you will get the result in the same request.</description>
     </item>
     <item>
       <title>Private Beta is Open</title>
-      <link>//192.168.1.161:44829/action/</link>
+      <link>www.example.com/action/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
-      <guid>//192.168.1.161:44829/action/</guid>
+      <guid>www.example.com/action/</guid>
       <description>We are currently in private beta. To register your interest, please leave your email at the following link: https://forms.gle/ZkAzxLVnVDftLNLn7</description>
     </item>
   </channel>
