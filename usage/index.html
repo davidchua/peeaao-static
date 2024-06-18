@@ -55,7 +55,7 @@
 <tbody>
 <tr>
 <td>target</td>
-<td>URL to target (in http/https)</td>
+<td>ping target in the format (<!-- raw HTML omitted -->://<!-- raw HTML omitted -->)</td>
 <td>-</td>
 <td>X</td>
 <td>X</td>
@@ -90,10 +90,25 @@
 </tr>
 <tr>
 <td>expected_code</td>
-<td>-</td>
+<td>expected http status code (http/https only)</td>
 <td>-</td>
 <td>X</td>
 <td>X</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Available Locations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nyc</td>
+</tr>
+<tr>
+<td>singapore</td>
 </tr>
 </tbody>
 </table>
@@ -101,11 +116,18 @@
 <p>In this mode, you will get the result in the same request.</p>
 <p>To send out a single request, you must <strong>NOT</strong> have the following parameters set <code>interval</code>, <code>callback_url</code> and <code>count</code></p>
 <h4 id="example-request">Example Request</h4>
+<h5 id="httphttps">HTTP/HTTPS</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    https://api.peeaao.com/ping \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d target=https://api.peeaao.com/ping \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d target=https://url \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d expected_code=301  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d expected_code=301
+</span></span></span></code></pre></div><h5 id="tcpudp">TCP/UDP</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d target=tcp://mytestserver.com \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d target=https://url \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d expected_code=301
 </span></span></span></code></pre></div><h4 id="example-response">Example Response</h4>
 <table>
 <thead>
@@ -164,7 +186,10 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;&lt;error message&gt;&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h3 id="interval--callback">Interval / Callback</h3>
+</span></span></code></pre></div><h3 id="interval--callback-coming-soon">Interval / Callback (COMING SOON)</h3>
+<blockquote>
+<p>This mode is not in production yet.</p>
+</blockquote>
 <p>In this mode, the result will be sent back to you via a <code>POST</code> to the <code>callback_url</code>. A initial response will be returned to your request without any special parameters.</p>
 <p>Upon a successful request being accepted by our API server, you will receive a <code>200</code>.</p>
 <p><strong>Note</strong>: This does not denote a successful ping result but rather is returned to inform you that your request have been well received and being processed.</p>
