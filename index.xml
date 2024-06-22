@@ -13,14 +13,14 @@
       <link>www.example.com/servers/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
       <guid>www.example.com/servers/</guid>
-      <description> Singapore New York, US and many more to come </description>
+      <description> Singapore New York, US Amsterdam, Netherlands and many more to come </description>
     </item>
     <item>
       <title>Usage</title>
       <link>www.example.com/usage/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
       <guid>www.example.com/usage/</guid>
-      <description>To use, you will make a curl to our API server and specify a callback_url which you will receive notifications on the ping results at.&#xA;curl -X POST \ -H &amp;#34;Authorization: Bearer &amp;lt;token&amp;gt; \ https://api.peeaao.com/ping \ -d target=https://url \ -d interval=15 \ -d count=100 \ -d locations=singapore \ -d callback_url=https://callback_url \ -d expected_code=301 Parameter Description Optional Single Request Interval/Callback target ping target in the format (://) - X X interval interval between each pings in seconds Yes - X callback_url - - - X locations Ping from locations (comma-delimited) Yes X X count - - - X expected_code expected http status code (http/https only) - X X Available Locations nyc singapore ✒ Single Request In this mode, you will get the result in the same request.</description>
+      <description>To use, you will make a curl to our API server and specify a callback_url which you will receive notifications on the ping results at.&#xA;curl -X POST \ -H &amp;#34;Authorization: Bearer &amp;lt;token&amp;gt; \ https://api.peeaao.com/ping \ -d target=https://url \ -d interval=15 \ -d count=100 \ -d locations=singapore \ -d callback_url=https://callback_url \ -d expected_code=301 Parameter Description Optional Single Request Interval/Callback target ping target in the format (://) - X X interval interval between each pings in seconds Yes - X callback_url - - - X locations Ping from locations (comma-delimited) Yes X X count - - - X expected_code expected http status code (http/https only) - X X Available Locations nyc singapore amsterdam ✒ Single Request In this mode, you will get the result in the same request.</description>
     </item>
     <item>
       <title>Private Beta is Open</title>
