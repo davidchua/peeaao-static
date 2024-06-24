@@ -32,7 +32,7 @@
     <h1 id="title" class="title-summary">Usage</h1>
     <div>
       <article id="content">
-        <p>To use, you will make a curl to our API server and specify a <code>callback_url</code> which you will receive notifications on the ping results at.</p>
+        <p>To use, you will make a curl to our API server and specify a <code>target</code> you want to ping and an optional <code>locations</code> to set where the servers will be pinging from.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    https://api.peeaao.com/ping \
@@ -49,7 +49,6 @@
 <th>Description</th>
 <th>Optional</th>
 <th>Single Request</th>
-<th>Interval/Callback</th>
 </tr>
 </thead>
 <tbody>
@@ -58,41 +57,17 @@
 <td>ping target in the format (<!-- raw HTML omitted -->://<!-- raw HTML omitted -->)</td>
 <td>-</td>
 <td>X</td>
-<td>X</td>
-</tr>
-<tr>
-<td>interval</td>
-<td>interval between each pings in seconds</td>
-<td>Yes</td>
-<td>-</td>
-<td>X</td>
-</tr>
-<tr>
-<td>callback_url</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>X</td>
 </tr>
 <tr>
 <td>locations</td>
 <td>Ping from locations (comma-delimited)</td>
 <td>Yes</td>
 <td>X</td>
-<td>X</td>
-</tr>
-<tr>
-<td>count</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>X</td>
 </tr>
 <tr>
 <td>expected_code</td>
 <td>expected http status code (http/https only)</td>
 <td>-</td>
-<td>X</td>
 <td>X</td>
 </tr>
 </tbody>
@@ -115,9 +90,15 @@
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h3 id="-single-request">✒ Single Request</h3>
 <p>In this mode, you will get the result in the same request.</p>
-<p>To send out a single request, you must <strong>NOT</strong> have the following parameters set <code>interval</code>, <code>callback_url</code> and <code>count</code></p>
+<p>We&rsquo;re now in private beta, so in order to try this service out, you will need to register your interest in the link below and an auth token will be sent to you via email shortly after.</p>
+<p><a href="https://forms.gle/ZkAzxLVnVDftLNLn7">Sign up for the private beta</a></p>
+<p>This auth token will need to be sent in the <code>headers</code> as part of the <code>Bearer</code> token. More information can be seen in the examples below.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h4 id="example-request">Example Request</h4>
 <h5 id="httphttps">HTTP/HTTPS</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#ae81ff">\
@@ -146,11 +127,6 @@
 <td>tcp, udp, http, https</td>
 </tr>
 <tr>
-<td>req_status</td>
-<td>status of the ping request</td>
-<td>ping_completed, ping_failure, unexpected_error</td>
-</tr>
-<tr>
 <td>status</td>
 <td>status of the ping results</td>
 <td>up, down, mixed</td>
@@ -162,6 +138,8 @@
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 200 response</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
@@ -170,7 +148,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;locations&#34;</span>: <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;singapore&#34;</span>: <span style="color:#f92672">[</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;xr41s13&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 315,
@@ -179,7 +157,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;errors&#34;</span>: <span style="color:#f92672">[</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;[eu1.peeaao.com:4123] rpc error: code = DeadlineExceeded desc = context deadline exceeded&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;[xr41s13] rpc error: code = DeadlineExceeded desc = context deadline exceeded&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;one or more locations is not returning the expected status code (301)&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">]</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;DOWN&#34;</span>
@@ -188,98 +166,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;&lt;error message&gt;&#34;</span>,
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h3 id="interval--callback-coming-soon">Interval / Callback (COMING SOON)</h3>
-<blockquote>
-<p>This mode is not in production yet.</p>
-</blockquote>
-<p>In this mode, the result will be sent back to you via a <code>POST</code> to the <code>callback_url</code>. A initial response will be returned to your request without any special parameters.</p>
-<p>Upon a successful request being accepted by our API server, you will receive a <code>200</code>.</p>
-<p><strong>Note</strong>: This does not denote a successful ping result but rather is returned to inform you that your request have been well received and being processed.</p>
-<h4 id="example-request-1">Example Request</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    https://api.peeaao.com/ping \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d target=https://url \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d interval=15 \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d count=100 \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d locations=singapore \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d callback_url=https://callback_url \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    -d expected_code=301  
-</span></span></span></code></pre></div><h4 id="initial-response">Initial Response</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 200 response</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;a generated number&gt;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 4xx-5xx response</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;&lt;error message&gt;&#34;</span>,
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>The <code>callback_url</code> will receive a <code>POST</code> under the following circumstances:</p>
-<ol>
-<li>The ping request have been completed and a summary is returned</li>
-<li>In between <code>ping_intervals</code>, when a ping result fails the <code>expected_code</code></li>
-<li>The ping request is unexpectedly terminated</li>
-</ol>
-<h4 id="callback-success">Callback Success</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># callback response</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;generated number returned from initial request&gt;,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ping_completed&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;https://google.com&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;interval&#34;</span>: 15,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;count&#34;</span>: 2,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;locations&#34;</span>: <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;singapore&#34;</span>: <span style="color:#f92672">[</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 315,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 145,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">200</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;errors&#34;</span>: <span style="color:#f92672">[]</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;UP&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h4 id="callback-ping-failure">Callback Ping Failure</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;generated number returned from initial request&gt;,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ping_failure&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;target&#34;</span>: <span style="color:#e6db74">&#34;https://google.com&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;interval&#34;</span>: 15,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;count&#34;</span>: 2,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;locations&#34;</span>: <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;singapore&#34;</span>: <span style="color:#f92672">[</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;runner_id&#34;</span>: <span style="color:#e6db74">&#34;ap1.peeaao.com&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;singapore&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: &lt;timestamp&gt;,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;result_in_ms&#34;</span>: 145,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;code&#34;</span>: <span style="color:#ae81ff">304</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;DOWN&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h4 id="callback-request-terminated">Callback Request Terminated</h4>
-<p>This is returned when the request was terminated. You should not expect any further callbacks after this.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;request_id&#34;</span>: &lt;generated number returned from initial request&gt;,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;unexpected_error&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;error&#34;</span>: &lt;msg&gt;,
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
       </article>
     </div>
   </section>
