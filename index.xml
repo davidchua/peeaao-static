@@ -23,6 +23,13 @@
       <description>To use, you will need to make an API call to our API server and specify a target you want to ping and an optional locations to set where the servers will be pinging from.&#xA;curl -X POST \ -H &amp;#34;Authorization: Bearer &amp;lt;token&amp;gt; \ https://api.peeaao.com/ping \ -d target=https://url \ -d locations=singapore \ -d expected_code=301 Parameter Description Optional Single Request target ping target in the format (scheme://address) - X locations Ping from locations (comma-delimited) Yes X expected_code expected http status code (http/https only) - X Available Locations nyc singapore amsterdam ✒ Single Request In this mode, you will get the ping result in the same request.</description>
     </item>
     <item>
+      <title>Use Cases</title>
+      <link>www.example.com/use-cases/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      <guid>www.example.com/use-cases/</guid>
+      <description>Using PEEAAO&amp;rsquo;s API, you can build tools that help track your sites&amp;rsquo; uptime and response times.&#xA;Prometheus &amp;amp; Grafana Using our PEEAAO Prometheus Exporter, you can start to retrieve metrics that you can plug into Grafana.</description>
+    </item>
+    <item>
       <title>Private Beta is Open</title>
       <link>www.example.com/action/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
